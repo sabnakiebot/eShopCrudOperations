@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1> Manage Users
+    </h1>
+    <div class="m-2"><a class="h3" th:href="@{/users/new}" >Add New Users</div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <th>User Id</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th></th>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${lstUser}">
+                <td>[[${user.id}]]</td>
+                <td>[[${user.password}]]</td>
+                <td>[[${user.email}]]</td>
+                <td>[[${user.name}]]</td>
+                <td>
+                    <a class="h4" th:href="@{'/users/edit/'+${user.id}}">Edit  </a>
+                    <a class="h4"  th:href="@{'/users/delete/'+${user.id}}">Delete</a>
+                </td>
+            </th:block>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+</body>
+</html>
