@@ -17,17 +17,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private Integer id;
 
-    @Column(name="email" , nullable = false,unique = true,length=50)
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(name="password" , nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name="name" , nullable = false , length = 100)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
+    @Column(name = "enabled")
+    private Boolean enabled;
 
 
 }
