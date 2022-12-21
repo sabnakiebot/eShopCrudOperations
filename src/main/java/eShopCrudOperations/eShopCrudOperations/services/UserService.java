@@ -44,8 +44,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findByUserId(Integer id) {
-        return userRepository.findByUserId(id);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 

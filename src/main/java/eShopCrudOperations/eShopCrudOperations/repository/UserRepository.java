@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends CrudRepository<User,Integer> {
     public Long countById(Integer id);
 
-    @Query("select u from User  u where u.id = ?1 ")
-    public User findByUserId(Integer id);
+    @Query("select u from User  u where u.email = ?1 ")
+    public User findByEmail(String email);
 }

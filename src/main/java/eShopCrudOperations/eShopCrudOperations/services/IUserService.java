@@ -13,5 +13,5 @@ public interface IUserService {
 
     void delete(Integer id) throws UserNotFoundException;
 
-    User findByUserId(Integer id);
+    User findByEmail(String email);
 }

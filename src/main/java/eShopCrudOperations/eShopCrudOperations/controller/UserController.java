@@ -77,16 +77,18 @@ public class UserController {
     @PostMapping("/userLogin")
     public String login(@ModelAttribute("user") User user) {
 
-        Integer userId=user.getId();
-        System.out.println(userId);
-        User userData=userService.findByUserId(userId);
+        String email=user.getEmail();
+        Integer idd=user.getId();
+        System.out.println(idd);
+        System.out.println(email);
+        User userData=userService.findByEmail(email);
         if(user.getEmail().equals(userData.getEmail()) && user.getPassword().equals(userData.getPassword())  )
         {
-            return "redirect:/index";
+            return "index";
         }
         else
         {
-            return "redirect:/login";
+            return "login";
         }
 
 
