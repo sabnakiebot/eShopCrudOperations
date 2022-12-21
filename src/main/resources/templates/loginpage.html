@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Using Spring Security</title>
+</head>
+<body>
+<div>
+    <form name="frm" th:action="@{/loginpage}" method="post" style="max-width:350px;margin:0 auto;">
+
+        <div class="border border-secondary p-3 rounded">
+            <p><h1>Login</h1></p>
+            <p> <input type="email" name="email" class="form-control" placeholder="E-mail" required autofocus/></p>
+            <p> <input type="password" name="password" class="form-control" placeholder="Password" required autofocus/></p>
+            <p><input type="submit" value="Login" class="btn btn-primary"/></p>
+            <p></p>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

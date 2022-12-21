@@ -12,4 +12,6 @@ public interface IUserService {
     User get(Integer id) throws UserNotFoundException;
 
     void delete(Integer id) throws UserNotFoundException;
+
+    User findByUserId(Integer id);
 }

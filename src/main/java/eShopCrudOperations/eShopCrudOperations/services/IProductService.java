@@ -1,6 +1,7 @@
 package eShopCrudOperations.eShopCrudOperations.services;
 
 import eShopCrudOperations.eShopCrudOperations.model.Product;
+import eShopCrudOperations.eShopCrudOperations.model.User;
 
 import java.util.List;
 
@@ -32,5 +33,8 @@ public interface IProductService {
 
     List<Product> findByNameEndsWithUsingNative(String name);
 
+    Product get(Integer id) throws UserNotFoundException;
+
+    void delete(Integer id) throws UserNotFoundException;
 
 }

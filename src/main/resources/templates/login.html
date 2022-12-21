@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to eShopCrud- Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<h1>
+    Welcome to eShopCrud
+</h1>
+
+
+    <div class="container">
+        <form th:action="@{/userLogin}" method="post" th:object="${user}" style="max-width:500px;margin:0 auto;">
+            <div class="step step-1 index active">
+                <h1>Login</h1>
+                <input type="hidden"   th:field="*{id}">
+                <div class="form-group">
+                    <input type="email"  placeholder="Email" th:field="*{email}">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="password"  th:field="*{password}">
+                </div>
+
+                <button type="submit" class="submit-btn" th:href="@{/login}">Submit</button>
+                <div class="_8icz"></div>
+                <a class="" th:href="@{/user_form}">Register Now ? </a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

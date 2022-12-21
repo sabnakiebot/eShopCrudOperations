@@ -1,11 +1,14 @@
 package eShopCrudOperations.eShopCrudOperations.services;
 
 import eShopCrudOperations.eShopCrudOperations.model.Product;
+import eShopCrudOperations.eShopCrudOperations.model.User;
 import eShopCrudOperations.eShopCrudOperations.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProductService implements IProductService {
 
@@ -72,6 +75,24 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> findByNameEndsWithUsingNative(String name) {
         return productRepository.findByNameEndsWithUsingNative(name);
+    }
+
+    @Override
+    public Product get(Integer id) throws UserNotFoundException {
+        Optional<Product> result = productRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        throw new UserNotFoundException("Could Not Find any Product with the Id" + id);
+    }
+
+    @Override
+    public void delete(Integer id) throws UserNotFoundException {
+        Long count = productRepository.countById(id);
+        if (count == null || count == 0) {
+            throw new UserNotFoundException("Could Not Find any User with the Id" + id);
+        }
+        productRepository.deleteById(id);
     }
 
 }
