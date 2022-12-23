@@ -9,9 +9,9 @@ public interface IUserService {
     List<User> getAllUsers();
     void save(User user);
 
-    User get(Integer id) throws UserNotFoundException;
+    User get(Long id) throws UserNotFoundException;
 
-    void delete(Integer id) throws UserNotFoundException;
+    void delete(Long id) throws UserNotFoundException;
 
-    User findByEmail(String email);
+    User findByUsername(String username);
 }

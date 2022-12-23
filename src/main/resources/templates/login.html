@@ -14,9 +14,9 @@
     <div class="container">
         <form th:action="@{/userLogin}" method="post" th:object="${user}" style="max-width:500px;margin:0 auto;">
             <div class="step step-1 index active">
-                <h1>Login Now</h1>
+                <h1>Login Now !!</h1>
                 <div class="form-group">
-                    <input type="email"  placeholder="Email" th:field="*{email}" name="email">
+                    <input type="username"  placeholder="Username" th:field="*{username}" name="username">
                 </div>
                 <div class="form-group">
                     <input type="password" placeholder="password"  th:field="*{password}" name="password">
@@ -24,7 +24,7 @@
 
                 <button type="submit" class="submit-btn" th:href="@{/login}">Submit</button>
                 <div class="_8icz"></div>
-                <a class="" th:href="@{/user_form}">Register Now ? </a>
+                <a class="" th:href="@{/users}">Register Now ? </a>
             </div>
         </form>
     </div>

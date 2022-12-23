@@ -2,6 +2,7 @@ package eShopCrudOperations.eShopCrudOperations.services;
 
 import eShopCrudOperations.eShopCrudOperations.model.User;
 import eShopCrudOperations.eShopCrudOperations.repository.UserRepository;
+import org.hibernate.id.IntegralDataTypeHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User get(Integer id) throws UserNotFoundException {
+    public User get(Long id) throws UserNotFoundException {
+
         Optional<User> result = userRepository.findById(id);
         if (result.isPresent()) {
             return result.get();
@@ -35,7 +37,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void delete(Integer id) throws UserNotFoundException {
+    public void delete(Long id) throws UserNotFoundException {
+
         Long count = userRepository.countById(id);
         if (count == null || count == 0) {
             throw new UserNotFoundException("Could Not Find any User with the Id" + id);
@@ -44,8 +47,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
 

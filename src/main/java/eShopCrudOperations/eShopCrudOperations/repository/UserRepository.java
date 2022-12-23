@@ -1,14 +1,20 @@
 package eShopCrudOperations.eShopCrudOperations.repository;
 
 import eShopCrudOperations.eShopCrudOperations.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends CrudRepository<User,Integer> {
-    public Long countById(Integer id);
+import java.util.List;
+import java.util.Optional;
 
-    @Query("select u from User  u where u.email = ?1 ")
-    public User findByEmail(String email);
+@Repository
+public interface UserRepository extends CrudRepository<User,Long> {
+    public Long countById(Long id);
+
+//    @Query("select u from User  u where u.username = ?1 ")
+     User findByUsername(String username);
+
+
 }

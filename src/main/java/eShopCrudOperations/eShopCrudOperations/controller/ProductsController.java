@@ -32,7 +32,7 @@ public class ProductsController {
     public String showNewForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("pageTitle","Add New Product");
-        return "product_form";
+        return "productform";
     }
 
     @PostMapping("/products/save")
@@ -49,7 +49,7 @@ public class ProductsController {
             Product product=   productService.get(id);
             model.addAttribute("product",product);
             model.addAttribute("pageTitle","Edit Product by ID : "+id);
-            return "product_form";
+            return "productform";
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message",e.getMessage());
             return "redirect:/products";

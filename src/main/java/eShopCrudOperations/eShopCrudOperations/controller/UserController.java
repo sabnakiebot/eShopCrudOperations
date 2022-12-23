@@ -33,24 +33,25 @@ public class UserController {
     public String showNewForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Add New User");
-        return "user_form";
+        return "userform";
     }
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra) {
 
+        System.out.println(user.getUsername());
         userService.save(user);
         ra.addFlashAttribute("message", "The User has been added Successfully !!");
         return "redirect:/users";
     }
 
     @GetMapping("/users/edit/{id}")
-    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
         try {
             User user = userService.get(id);
             model.addAttribute("user", user);
             model.addAttribute("pageTitle", "Edit User by ID : " + id);
-            return "user_form";
+            return "userform";
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/users";
@@ -60,7 +61,7 @@ public class UserController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
+    public String deleteUser(@PathVariable("id") Long id, RedirectAttributes ra) {
         try {
             userService.delete(id);
             ra.addFlashAttribute("message", "The User Id : " + id + " has been Deleted Successfully !!");
@@ -77,12 +78,12 @@ public class UserController {
     @PostMapping("/userLogin")
     public String login(@ModelAttribute("user") User user) {
 
-        String email=user.getEmail();
-        Integer idd=user.getId();
+        String username=user.getUsername();
+        Long idd=user.getId();
         System.out.println(idd);
-        System.out.println(email);
-        User userData=userService.findByEmail(email);
-        if(user.getEmail().equals(userData.getEmail()) && user.getPassword().equals(userData.getPassword())  )
+        System.out.println(username);
+        User userData=userService.findByUsername(username);
+        if(user.getUsername().equals(userData.getUsername()) && user.getPassword().equals(userData.getPassword())  )
         {
             return "index";
         }
@@ -103,30 +104,9 @@ public class UserController {
         return "login";
     }
 
-    //Code not Working
 
 
-    // Using Spring Security
-    @GetMapping("/loginpage")
-    public String login() {
-       User user=getPrincipal();
-        System.out.println(user);
-       if(user!=null)
-       {
-           return "index";
-       }
-       return "loginpage";
-    }
 
-    private User getPrincipal(){
-        User user=null;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User)
-        {
-            user=(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        }
-        return user;
-    }
 
 
 

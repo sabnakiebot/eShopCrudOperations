@@ -18,7 +18,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "user_id")
-    private Integer id;
+    private Long id;
+
+    @Column(name = "username",nullable = false,  unique = true, length = 100)
+    private String username;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
@@ -30,6 +33,9 @@ public class User {
     private String name;
     @Column(name = "enabled")
     private Boolean enabled;
+
+    @Column(name = "role", nullable = false, length = 100)
+    private String role;
 
 
 }
