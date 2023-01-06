@@ -6,7 +6,7 @@ plugins {
 
 group = 'eShopCrudOperations'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '19'
+sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
@@ -41,6 +41,10 @@ dependencies {
 
 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: securityVersion
+
+
+	implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.9.0'
+
 
 
 
