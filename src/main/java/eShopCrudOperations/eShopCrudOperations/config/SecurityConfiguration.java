@@ -41,13 +41,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/health")
                 .permitAll()
-                .antMatchers("/index")
-                .hasAuthority("ADMIN")
-                .antMatchers("/products")
-                .hasAuthority("USER")
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+//                .antMatchers("/index")
+//                .hasAuthority("ADMIN")
+//                .antMatchers("/products")
+//                .hasAuthority("USER")
+                .anyRequest().permitAll();
+
 
     }
 }
